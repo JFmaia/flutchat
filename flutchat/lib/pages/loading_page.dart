@@ -6,11 +6,21 @@ class LoadingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).primaryColor,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text("Carregando..."),
+            RefreshProgressIndicator(),
+            SizedBox(
+              height: 8,
+            ),
+            Text(
+              "Carregando...",
+              style: TextStyle(
+                color: Colors.white,
+              ),
+            ),
           ],
         ),
       ),
