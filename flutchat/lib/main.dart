@@ -1,6 +1,5 @@
+import 'package:flutchat/pages/auth_page.dart';
 import 'package:flutter/material.dart';
-
-import 'pages/loading_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -14,7 +13,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: LoadingPage(),
+      home: AuthPage(),
       debugShowCheckedModeBanner: false,
     );
   }
