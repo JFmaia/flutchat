@@ -6,7 +6,7 @@ class AuthFormData {
   String name = "";
   String email = "";
   String password = "";
-  File? Image;
+  File? image;
   AuthMode _mode = AuthMode.Login;
 
   bool get isLogin {
