@@ -1,5 +1,5 @@
 import 'package:flutchat/components/auth_form.dart';
-import 'package:flutchat/models/auth_form_data.dart';
+import 'package:flutchat/core/models/auth_form_data.dart';
 import 'package:flutter/material.dart';
 
 class AuthPage extends StatefulWidget {
