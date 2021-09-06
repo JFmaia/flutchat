@@ -1,5 +1,5 @@
 import 'package:flutchat/core/models/chat_user.dart';
-import 'package:flutchat/core/services/auth/auth_mock_service.dart';
+import 'package:flutchat/core/services/auth/auth_service.dart';
 import 'package:flutchat/pages/chat_page.dart';
 import 'package:flutchat/pages/loading_page.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +13,7 @@ class AuthOrAppPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: StreamBuilder<ChatUser?>(
-        stream: AuthMockService().userChanges,
+        stream: AuthService().userChanges,
         builder: (ctx, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return LoadingPage();
