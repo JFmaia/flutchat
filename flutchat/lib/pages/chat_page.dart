@@ -1,4 +1,4 @@
-import 'package:flutchat/core/services/auth/auth_mock_service.dart';
+import 'package:flutchat/core/services/auth/auth_service.dart';
 import 'package:flutter/material.dart';
 
 class ChatPage extends StatefulWidget {
@@ -20,7 +20,7 @@ class _ChatPageState extends State<ChatPage> {
             TextButton(
               child: Text("Logout"),
               onPressed: () {
-                AuthMockService().logout();
+                AuthService().logout();
               },
             ),
           ],
