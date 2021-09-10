@@ -7,9 +7,9 @@ import 'package:flutchat/core/services/auth/auth_service.dart';
 
 class AuthMockService implements AuthService {
   static final _defaultUser = ChatUser(
-    id: "1",
-    name: "João Paulo",
-    email: "joaopaulo@gmail.com",
+    id: "12345",
+    name: "José",
+    email: "jose@gmail.com",
     imageUrl: "assets/images/avatar.png",
   );
 
@@ -24,7 +24,7 @@ class AuthMockService implements AuthService {
   });
 
   ChatUser? get currentUser {
-    return null;
+    return _currentUser;
   }
 
   Stream<ChatUser?> get userChanges {
