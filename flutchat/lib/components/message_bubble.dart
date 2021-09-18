@@ -45,7 +45,7 @@ class MessageBubble extends StatelessWidget {
               belongsToMe ? MainAxisAlignment.end : MainAxisAlignment.start,
           children: [
             Container(
-              width: mediaQuery.width * 0.42,
+              width: mediaQuery.width * 0.45,
               padding: EdgeInsets.symmetric(
                 vertical: 10,
                 horizontal: 16,
@@ -96,8 +96,8 @@ class MessageBubble extends StatelessWidget {
         ),
         Positioned(
           top: 0,
-          left: belongsToMe ? null : mediaQuery.width * 0.38,
-          right: belongsToMe ? mediaQuery.width * 0.38 : null,
+          left: belongsToMe ? null : mediaQuery.width * 0.40,
+          right: belongsToMe ? mediaQuery.width * 0.40 : null,
           child: _showUserImage(message.userImageURL),
         ),
       ],
