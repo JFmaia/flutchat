@@ -15,5 +15,6 @@ class PushNotificationService with ChangeNotifier {
 
   void remove(int i) {
     _items.removeAt(i);
+    notifyListeners();
   }
 }
