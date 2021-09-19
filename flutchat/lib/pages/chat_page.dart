@@ -17,81 +17,82 @@ class _ChatPageState extends State<ChatPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text(
-            "Flutchat",
-          ),
-          actions: [
-            DropdownButtonHideUnderline(
-              child: DropdownButton(
-                icon: Icon(
-                  Icons.more_vert,
-                  color: Colors.white,
-                ),
-                items: [
-                  DropdownMenuItem(
-                    value: 'logout',
-                    child: Container(
-                      child: Row(
-                        children: [
-                          Icon(
-                            Icons.exit_to_app,
-                            color: Colors.black87,
-                          ),
-                          SizedBox(width: 1),
-                          Text("Sair"),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-                onChanged: (value) {
-                  if (value == 'logout') {
-                    AuthService().logout();
-                  }
-                },
+      appBar: AppBar(
+        title: Text(
+          "Flutchat",
+        ),
+        actions: [
+          DropdownButtonHideUnderline(
+            child: DropdownButton(
+              icon: Icon(
+                Icons.more_vert,
+                color: Colors.white,
               ),
-            ),
-            Stack(
-              children: [
-                IconButton(
-                  icon: Icon(Icons.notifications),
-                  onPressed: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) => NotificationPage(),
-                      ),
-                    );
-                  },
-                ),
-                Positioned(
-                  top: 5,
-                  right: 5,
-                  child: CircleAvatar(
-                    maxRadius: 10,
-                    backgroundColor: Colors.red.shade800,
-                    child: Text(
-                      '${Provider.of<ChatNotificationService>(context).itemsCount}',
-                      style: TextStyle(
-                        fontSize: 12,
-                        color: Colors.white,
-                      ),
+              items: [
+                DropdownMenuItem(
+                  value: 'logout',
+                  child: Container(
+                    child: Row(
+                      children: [
+                        Icon(
+                          Icons.exit_to_app,
+                          color: Colors.black87,
+                        ),
+                        SizedBox(width: 1),
+                        Text("Sair"),
+                      ],
                     ),
                   ),
                 ),
               ],
-            )
+              onChanged: (value) {
+                if (value == 'logout') {
+                  AuthService().logout();
+                }
+              },
+            ),
+          ),
+          Stack(
+            children: [
+              IconButton(
+                icon: Icon(Icons.notifications),
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => NotificationPage(),
+                    ),
+                  );
+                },
+              ),
+              Positioned(
+                top: 5,
+                right: 5,
+                child: CircleAvatar(
+                  maxRadius: 10,
+                  backgroundColor: Colors.red.shade800,
+                  child: Text(
+                    '${Provider.of<ChatNotificationService>(context).itemsCount}',
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          )
+        ],
+      ),
+      body: SafeArea(
+        child: Column(
+          children: [
+            Expanded(
+              child: Messages(),
+            ),
+            NewMessage(),
           ],
         ),
-        body: SafeArea(
-          child: Column(
-            children: [
-              Expanded(
-                child: Messages(),
-              ),
-              NewMessage(),
-            ],
-          ),
-        ));
+      ),
+    );
   }
 }
