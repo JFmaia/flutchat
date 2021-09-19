@@ -2,6 +2,7 @@ import 'package:flutchat/components/messages.dart';
 import 'package:flutchat/components/new_message.dart';
 import 'package:flutchat/core/services/auth/auth_service.dart';
 import 'package:flutchat/core/services/notification/chat_notification_service.dart';
+import 'package:flutchat/pages/notification_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -55,7 +56,13 @@ class _ChatPageState extends State<ChatPage> {
               children: [
                 IconButton(
                   icon: Icon(Icons.notifications),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => NotificationPage(),
+                      ),
+                    );
+                  },
                 ),
                 Positioned(
                   top: 5,
