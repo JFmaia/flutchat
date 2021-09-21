@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:io';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutchat/core/models/chat_user.dart';
@@ -46,6 +47,9 @@ class AuthFirebaseService implements AuthService {
     //2. Atualizar atributos do usuário
     credential.user?.updateDisplayName(name);
     credential.user?.updatePhotoURL(imageURL);
+
+    //3. Salvar usuário no banco de dados (opcional)
+    await _saveChatUser(_toChatUser(credential.user!));
   }
 
   Future<void> login(
@@ -68,6 +72,16 @@ class AuthFirebaseService implements AuthService {
     final imageRef = storage.ref().child('user_images').child(imageName);
     await imageRef.putFile(image).whenComplete(() => {});
     return await imageRef.getDownloadURL();
+  }
+
+  Future<void> _saveChatUser(ChatUser user) async {
+    final store = FirebaseFirestore.instance;
+    final docRef = store.collection("users").doc(user.id);
+    return docRef.set({
+      'name': user.name,
+      'email': user.email,
+      'imageURL': user.imageUrl,
+    });
   }
 
   static ChatUser _toChatUser(User user) {
