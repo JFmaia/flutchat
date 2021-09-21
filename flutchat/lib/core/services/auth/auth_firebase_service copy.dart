@@ -45,7 +45,12 @@ class AuthFirebaseService implements AuthService {
   Future<void> login(
     String email,
     String password,
-  ) async {}
+  ) async {
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+      email: email,
+      password: password,
+    );
+  }
 
   Future<void> logout() async {
     FirebaseAuth.instance.signOut();
