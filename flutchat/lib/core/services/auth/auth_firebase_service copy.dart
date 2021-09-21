@@ -45,8 +45,8 @@ class AuthFirebaseService implements AuthService {
     final imageURL = await _uploadUserImage(image, imageName);
 
     //2. Atualizar atributos do usuário
-    credential.user?.updateDisplayName(name);
-    credential.user?.updatePhotoURL(imageURL);
+    await credential.user?.updateDisplayName(name);
+    await credential.user?.updatePhotoURL(imageURL);
 
     //3. Salvar usuário no banco de dados (opcional)
     await _saveChatUser(_toChatUser(credential.user!));
